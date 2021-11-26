@@ -262,7 +262,7 @@
 </template>
 
 <script>
-import moment from 'moment';
+import moment from 'moment'
 
 const { v4: uuidv4 } = require('uuid');
 uuidv4();
@@ -273,7 +273,6 @@ export default {
   middleware: 'auth',
 
   data: vm => ({
-    newMethods: [],
     valid: false,
     dialog: false,
     dialog_error: false,
@@ -283,8 +282,6 @@ export default {
     availableVac: null, // заглушка для доступных дней отпуска
     doc_status: 2, // первоначальный статус документа
     doc_name: 'Заявка на отпуск', // название документа в бд
-    days_used: 0, // количество выбранных дней отпуска - COUNT
-    // КОЛИЧЕСТВО КАЛЕНДАРНЫХ ДНЕЙ ОТПУСКА !!! (не учитываются праздничные дни )
     loadingField: true,
     fieldRules: [
       (v) => !!v || 'Это обязательное поле',
@@ -402,17 +399,17 @@ export default {
 
         //  http://nls-test/testaman/hs/PrettyAPI/V2 - актуальный адрес для отправки запроса в 1С
         // КОД ДЛЯ ОТПРАВКИ ФОРМЫ В 1С [ ИИН, ИД-пользователя?, ИД-заявкиБД, датаНачалаОтпуска, датаОкончанияОтпуска, типОтпуска ]
-        // await this.$axios.$post('http://nls-test/testaman/hs/PrettyAPI/V2123', {
-        //   id: idUUID, // base64 идентификатор заявки (уникальный ключ)
-        //   id_user: this.user.id,
-        //   id_num: this.user.id_num,
-        //   start_vacation: this.date1,
-        //   end_vacation: this.date2,
-        //   vacation_type: this.vacationType, // тип отпуска
-        // });
+        await this.$axios.$post('http://nls-1c/HttpService/hs/PrettyAPI/V2', {
+          id: idUUID, // base64 идентификатор заявки (уникальный ключ)
+          id_user: this.user.id,
+          id_num: this.user.id_num,
+          start_vacation: this.date1,
+          end_vacation: this.date2,
+          vacation_type: this.vacationType, // тип отпуска
+        });
 
         // отправка заявки в БД таблицу заявок на отпуск
-        await this.$axios.$post('api/v1/vacations123/', {
+        await this.$axios.$post('api/v1/vacations/', {
           id: idUUID, // base64 идентификатор заявки (уникальный ключ)
           doc_name: this.doc_name,
           id_user: this.user.id,
@@ -440,12 +437,9 @@ export default {
 
         // 2,5 секунды тайм-аута для вывода лоадера при отправке данных - визуальная инициализация отправки заявления
         // чтобы пользователь увидет что все отправилось и
-        // ПОКАЗАТЬ ЧТОТО ТИПО ГАЛОЧКИ ПЕРЕД РЕДИРЕКТОМ
+        // ПОКАЗАТЬ ЧТОТО ТИПО ГАЛОЧКИ ПЕРЕД РЕДИРЕКТОМ ?
         await new Promise(resolve => setTimeout(() => { (this.dialog = false); (this.$router.push('/loglist')); }, 2500));
-        // await new Promise(resolve => setTimeout(() => { (this.dialog = false); (alert("HI WATAFAKER 2")); }, 2500));
-        // await this.$router.push('/loglist'); // перенаправление пользователя на страницу его заявок
-        // this.dialog = false
-        // (this.$router.push('/loglist'))
+
       } catch (e) {
         this.dialog_error = true // открывает диалоговое окно об ошибке с кнопкой перезагрузки
       }
@@ -460,10 +454,7 @@ export default {
       const createdDate = moment(this.date1).subtract(1, 'day').format('yyyy-MM-DD')
       const lastDate = moment(this.date1).add(this.availableVac, 'day').format('yyyy-MM-DD')
 
-      const val2 = createdDate
-      const val3 = lastDate
-
-      return val > val2 && val < val3
+      return val > createdDate && val < lastDate
     },
 
     // функция перезагрузки страницы
@@ -475,7 +466,8 @@ export default {
     async refreshVacation() {
       this.loadingField = true
       try {
-        const availVac = await this.$axios.$get('http://nls-test/testaman/hs/PrettyAPI/V1', {
+        // const availVac = await this.$axios.$get('http://nls-1c/testaman/hs/PrettyAPI/V1', {
+        const availVac = await this.$axios.$get('http://nls-1c/HttpService/hs/PrettyAPI/V1', {
           params: {
             iin_num: this.user.id_num // отправляем в гет запросе ИИН авторизованного пользователя
           }
