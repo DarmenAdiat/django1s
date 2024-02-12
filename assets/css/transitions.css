@@ -1,3 +1,21 @@
+.primary--text{
+  color: #1a535cff!important;
+}
+
+#flat .v-list-group__header__prepend-icon,
+#flat .v-list-item__icon:first-child{
+  margin-right: 15px!important;
+}
+#flat .v-list-group .v-list-group__header .v-list-group__header__append-icon {
+  min-width: 25px!important;
+  margin-left: 0!important;
+  margin-right: 0px!important;
+}
+#flat .v-list-item__action
+{
+  margin-right: 15px !important;
+}
+
 .page-enter-active,
 .page-leave-active {
   transition: opacity .3s ease;
@@ -6,3 +24,223 @@
 .page-leave-to {
   opacity: 0;
 }
+
+.mawsTable .v-data-table-header tr th {
+  font-size: 9px!important;
+  padding: 5px!important;
+}
+.mawsTable table tbody tr td {
+  font-size: 9px!important;
+  padding: 5px!important;
+}
+
+.maws_fileinputs_h4 {
+  text-align: center;
+  margin: 20px auto;
+}
+
+.editedRow, .editedRow:hover {
+  background-color: #81C784!important;
+  color: black;
+}
+
+.editedRowError, .editedRowError:hover {
+  background-color: #EF5350!important;
+  color: black;
+}
+
+
+#inputDisposal{
+  text-align: center;
+  font-size: 14px;
+  line-height: 26px;
+  padding: 2px;
+}
+
+.inputVacations{
+  color: black!important;
+  font-size: 24px!important;
+  width: 80%!important;
+  margin: 0 auto!important;
+}
+
+.inputVacations input {
+  text-align: center!important;
+  cursor: pointer!important;
+}
+
+.inputVacations .v-input__slot {
+  cursor: pointer!important;
+  margin: 0;
+}
+.inputVacations .v-text-field__details {
+  display: none;
+}
+
+.inputVacationsDates .v-input__slot {
+  width: 92%!important;
+}
+
+
+
+.mawsTable .v-data-table{
+  /*line-height: 1;*/
+  table-layout: fixed;
+}
+
+.mawsTable .v-data-table__wrapper table{
+  cursor: pointer;
+}
+
+.up_n_down_button{
+  position: absolute;
+  bottom: 0;
+  right:0;
+}
+
+.v-data-table__wrapper table tbody .v-data-table__empty-wrapper td{
+  padding-top:10px!important;
+}
+
+.v-data-table__wrapper table tbody tr td .v-input{
+  width: 40px!important;
+  height: 30px;
+  margin: auto;
+}
+
+.inputDisposal input::-webkit-outer-spin-button,
+.inputDisposal input::-webkit-inner-spin-button {
+  appearance: none!important;
+  -webkit-appearance: none!important;
+  -moz-appearance: none!important;
+}
+
+.v-data-table__wrapper table tbody tr td .v-input__control{
+  height: 30px!important;
+}
+.v-data-table__wrapper table tbody tr td .v-input__slot{
+  padding: 0 2px!important;
+  min-height: 30px!important;
+  margin: 0;
+}
+
+.v-data-table__wrapper table tbody tr td .v-input fieldset{
+  height: 30px!important;
+  padding-left: 2px;
+  top: 0;
+}
+.v-data-table__wrapper table .v-text-field__details{
+  display: none;
+}
+.v-data-table__wrapper table .v-input__slot legend{
+  display: none;
+}
+
+.cellCustomHead {
+  text-align: center!important;
+}
+.cellCustom {
+  text-align: center!important;
+}
+
+.message_info{
+  color: black;
+}
+.message_info_error{
+  color: #ff5252;
+}
+.message_info_success{
+  color: mediumseagreen;
+}
+.cellDelete{
+  text-align: center!important;
+}
+
+
+@media print {
+  table.report { page-break-after:auto }
+  table.report tr    { page-break-inside:avoid; page-break-after:auto }
+  table.report td    { page-break-inside:avoid; page-break-after:auto }
+  table.report thead { display:table-header-group }
+  table.report tfoot { display:table-footer-group }
+}
+
+@media print {
+  #downloadZ6{
+    display: none!important;
+  }
+  #downloadM29{
+    display: none!important;
+  }
+}
+
+.profile__container col-12{
+    margin: 0;
+    padding: 0;
+}
+
+.profile__block {
+  margin: 0;
+  padding: 10px;
+  width:100%;
+  height: 500px;
+  background-color: white;
+  border-radius: 20px;
+  text-align: left;
+  -webkit-box-shadow: 0 5px 15px 0 rgba(0,0,0,0.2);
+  -moz-box-shadow: 0 5px 15px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 5px 15px 0 rgba(0,0,0,0.2);
+  position: relative;
+}
+
+.profile__avatar{
+  margin: 30px auto!important;
+  padding: 0;
+  height: 200px;
+  width: 200px;
+}
+.profile__text{
+  margin: 20px;
+  text-align: center;
+}
+.profile__text p{
+  font-weight: bold;
+  text-align: justify!important;
+}
+
+.profile__block__edit {
+  margin: 0;
+  padding: 10px;
+  width:100%;
+  height: auto;
+  background-color: white;
+  border-radius: 20px;
+  text-align: left;
+  -webkit-box-shadow: 0 5px 15px 0 rgba(0,0,0,0.2);
+  -moz-box-shadow: 0 5px 15px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 5px 15px 0 rgba(0,0,0,0.2);
+  position: relative;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

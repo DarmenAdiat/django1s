@@ -29,14 +29,19 @@
 </template>
 
 <script>
+
 export default {
   name: "MyMenu",
   computed: {
+    user() {
+      return this.$auth.user.id_num
+    },
     links() {
       if (!this.$auth.loggedIn) {
         return [
           {title: 'Главная', to: '/'},
-          {title: 'Войти', to: '/login'},
+          {title: 'Вйти', to: '/login'},
+          {title: 'Регистрация', to: '/register'},
         ]
       } else {
         return [
@@ -44,7 +49,7 @@ export default {
           // {title: 'Таблица', to: '/price'},
           {title: 'Заявки', to: '/loglist'},
           {title: 'Заявка на отпуск', to: '/vacation'},
-          {title: 'Кабинет', to: '/lk'},
+          {title: 'Кабинет', to: '/profile'},
         ]
       }
     }
